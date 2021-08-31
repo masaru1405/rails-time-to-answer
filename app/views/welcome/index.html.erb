@@ -1,0 +1,27 @@
+<h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+
+
+<% if user_signed_in? %>
+   <p>
+      Usuário: <%= current_user.email %> | 
+      <%= link_to "Home User", users_backoffice_welcome_index_path %> |
+      <%= link_to "Logoff User",  destroy_user_session_path, method: :delete, style: 'color: red;' %>
+   </p>
+<% else %>
+   <p>
+      Usuário não logado | <%= link_to "User Login", new_user_session_path %>
+   </p>
+<% end %>
+
+<% if admin_signed_in? %>
+   <p>
+      Admin: <%= current_admin.email %> | 
+      <%= link_to "Home Admin", admins_backoffice_welcome_index_path %> |
+      <%= link_to "Logoff Admin",  destroy_admin_session_path, method: :delete, style: 'color: red;' %>
+   </p>
+<% else %>
+   <p>
+      Administrador não logado | <%= link_to "Admin Login", new_admin_session_path %>
+   </p>
+<% end %>

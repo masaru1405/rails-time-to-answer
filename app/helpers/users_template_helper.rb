@@ -1,0 +1,2 @@
+module UsersTemplateHelper
+end
