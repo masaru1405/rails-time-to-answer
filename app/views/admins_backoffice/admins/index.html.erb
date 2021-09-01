@@ -1,0 +1,50 @@
+<h1>AdminsBackoffice::Admins#index</h1>
+
+<h2>Listando Administradores</h2>
+
+<%= render 'layouts/messages' %>
+
+
+<div class="add_admin">
+   <%= link_to new_admins_backoffice_admin_path, style:"color: green;" do %>
+      <i class="bi bi-person-plus"></i> Novo Administrador
+   <% end %>
+</div>
+<table class="table">
+   <thead>
+      <tr>
+         <th>ID</th>
+         <th>Email</th>
+         <th>Edit</th>
+         <th><span style="color: red;">Delete</span></th>
+      </tr>
+   </thead>
+   <tbody>
+      <% @admins.each do |admin| %>
+         <tr>
+            <td><%= admin.id %></td>
+            <td><%= admin.email %></td>
+            <td>
+               <%= link_to edit_admins_backoffice_admin_path(admin) do %>
+                  <i class="bi bi-pencil"></i> 
+               <% end %>
+            </td> 
+            <td>
+               <%= link_to admins_backoffice_admin_path(admin), method: :delete, data: {confirm: "Deseja excluir este administrador?"} do %>
+                  <i class="bi bi-person-x"></i>
+               <% end %>
+            </td>
+         </tr>
+      <% end %>
+   </tbody>
+</table>
+
+
+<%= paginate @admins %>
+
+<div>
+   <%= link_to "Início", admins_backoffice_welcome_index_path %>
+</div>
+
+
+

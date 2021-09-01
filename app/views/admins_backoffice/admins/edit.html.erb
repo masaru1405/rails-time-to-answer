@@ -1,0 +1,24 @@
+<h1>Edit Admin</h1>
+
+<%
+=begin%>
+<% if @admin.errors.any? %>
+   <div class="alert alert-danger">
+      <ul>
+         <% @admin.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+         <% end %>
+      </ul>
+   </div>
+<% end %>
+<%
+=end%>
+
+<%= render partial: 'form', locals: {action_message: 'Editando Admin', btn: 'Atualizar'} %>
+
+
+
+<br>
+<div>
+   <%= link_to "Voltar", admins_backoffice_admins_path %>
+</div>

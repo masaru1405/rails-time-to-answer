@@ -1,0 +1,53 @@
+<h1>AdminsBackoffice::Questions#index</h1>
+
+<h2>Listando Questões</h2>
+
+<div>
+   Quantidade de questões: 
+   <span class="badge badge-success"> <!--não funciona-->
+      <%= @total %>
+   </span>
+</div>
+
+<div class="add_question">
+   <%= link_to new_admins_backoffice_question_path, style:"color: green;" do %>
+      <i class="bi bi-file-earmark-plus"></i> Nova Questão
+   <% end %>
+</div>
+
+<table class="table">
+   <thead>
+      <tr>
+         <th>ID</th>
+         <th>Questão</th>
+         <th>Assunto/Área</th>
+         <th>Edit</th>
+         <th>Delete</th>
+      </tr>
+   </thead>
+   <tbody>
+      <% @questions.each do |question| %>
+         <tr>
+            <td><%= question.id %></td>
+            <td><%= question.description.truncate(50) %></td>
+            <td><%= question.subject.description %></td>
+            <td>
+               <%= link_to edit_admins_backoffice_question_path(question) do %>
+                  <i class="bi bi-pencil"></i> 
+               <% end %>
+            </td>
+            <td>
+               <%= link_to admins_backoffice_question_path(question), method: :delete, data: {confirm: "Deseja excluir esta questão?"} do %>
+                  <i class="bi bi-x-circle"></i>
+               <% end %>
+            </td>
+         </tr>
+      <% end %>
+   </tbody>
+</table>
+
+<%= paginate @questions %>
+
+<div>
+   <%= link_to "Início", admins_backoffice_welcome_index_path %>
+</div>

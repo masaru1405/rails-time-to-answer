@@ -1,0 +1,47 @@
+<h1>AdminsBackoffice::Subjects#index</h1>
+
+<h2>Listando Assunto/Áreas</h2>
+
+<div class="add_subject">
+   <%= link_to new_admins_backoffice_subject_path, style:"color: green;" do %>
+      <i class="bi bi-file-earmark-plus"></i> Novo Assunto/Área
+   <% end %>
+</div>
+
+
+<table class="table">
+   <thead>
+      <tr>
+         <th>ID</th>
+         <th>Assunto/Área</th>
+         <th>Edit</th>
+         <th>Delete</th>
+      </tr>
+   </thead>
+   <tbody>  
+      <% @subjects.each do |subject| %>
+         <tr>
+            <td><%= subject.id %></td>
+            <td>
+               <%= subject.description %>
+            </td>
+            <td>
+               <%= link_to edit_admins_backoffice_subject_path(subject) do %>
+                  <i class="bi bi-pencil"></i> 
+               <% end %>
+            </td>
+            <td>
+               <%= link_to admins_backoffice_subject_path(subject), method: :delete, data: {confirm: "Deseja excluir este assunto?"} do %>
+                  <i class="bi bi-file-earmark-x"></i>
+               <% end %>
+            </td>
+         </tr>
+      <% end %>
+   </tbody>
+</table>
+
+<%= paginate @subjects %>
+
+<div>
+   <%= link_to "Início", admins_backoffice_welcome_index_path %>
+</div>

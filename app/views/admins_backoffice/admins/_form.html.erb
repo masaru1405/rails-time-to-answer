@@ -1,0 +1,29 @@
+<h3><%= action_message %></h3>
+
+<%= form_with(model: [:admins_backoffice, @admin]) do |form| %>
+   <div class="form-group">
+      <%= form.label :email %>
+      <%= form.text_field :email, class:"form-control", placeholder:"Digite o email"%>
+      <% @admin.errors.full_messages_for(:email).each do |message| %>
+         <div><span style="color: red;">* <%= message %></span></div>
+      <% end %>
+   </div>
+   <br>
+   <div class="form-group">
+      <%= form.label :password %>
+      <%= form.password_field :password, class:"form-control", placeholder:"Digite a senha" %>
+      <% @admin.errors.full_messages_for(:password).each do |message| %>
+         <div><span style="color: red;">* <%= message %></span></div>
+      <% end %>
+   </div>
+   <br>
+   <div class="form-group">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation, class:"form-control", placeholder:"Confirme a senha" %>
+      <% @admin.errors.full_messages_for(:password_confirmation).each do |message| %>
+         <div><span style="color: red;">* <%= message %></span></div>
+      <% end %>
+   </div>
+   <br>
+   <button type="submit" class="btn btn-primary"><%= btn %></button>
+<% end %>

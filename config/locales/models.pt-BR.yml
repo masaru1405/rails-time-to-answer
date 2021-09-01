@@ -10,9 +10,24 @@ pt-BR:
     attributes:
       admin:
         email: Email
+        password: Senha
+        password_confirmation: Confirmação da senha
         created_at: Criado em
         updated_at: Atualizado em
       user:
         email: Email
+        password: Senha
+        password_confirmation: Confirmação da senha
         created_at: Criado em
         updated_at: Atualizado em
+    errors:
+      models:
+        admin:
+          attributes:
+            email:
+              taken: já em uso
+            password:
+              blank: não pode estar em branco
+              too_short: deve ter no mínimo 6 caracteres
+            password_confirmation:
+              confirmation: não é a mesma
