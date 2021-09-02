@@ -1,0 +1,6 @@
+pt-BR:
+  message:
+    listing: Listando %{model}
+    confirm_delete_question: Deseja realmente deletar a questão de cód. %{item}
+    confirm_delete_subject: Deseja realmente deletar o assunto/área %{name}
+    confirm_delete_admin: Deseja realmente deletar o administrador %{email}

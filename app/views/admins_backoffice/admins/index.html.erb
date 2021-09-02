@@ -1,6 +1,6 @@
 <h1>AdminsBackoffice::Admins#index</h1>
 
-<h2>Listando Administradores</h2>
+<h2><%= t('message.listing', model: @admins.model_name.human(count: 2)) %></h2>
 
 <%= render 'layouts/messages' %>
 
@@ -30,7 +30,7 @@
                <% end %>
             </td> 
             <td>
-               <%= link_to admins_backoffice_admin_path(admin), method: :delete, data: {confirm: "Deseja excluir este administrador?"} do %>
+               <%= link_to admins_backoffice_admin_path(admin), method: :delete, data: {confirm: t('message.confirm_delete_admin', email: admin.email)} do %>
                   <i class="bi bi-person-x"></i>
                <% end %>
             </td>

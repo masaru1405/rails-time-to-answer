@@ -7,6 +7,12 @@ pt-BR:
       user:
         one: Usuário
         other: Usuários
+      subject:
+        one: Assunto/Área
+        other: Assuntos/Áreas
+      question:
+        one: Questão
+        other: Questões
     attributes:
       admin:
         email: Email
@@ -20,6 +26,18 @@ pt-BR:
         password_confirmation: Confirmação da senha
         created_at: Criado em
         updated_at: Atualizado em
+      subject:
+        id: Código
+        description: Descrição
+        edit: Editar
+        delete: Deletar
+      question:
+        id: Código
+        description: Descrição
+        subject: Assunto
+        subject_id: Código do Assunto
+        edit: Editar
+        delete: Deletar
     errors:
       models:
         admin:

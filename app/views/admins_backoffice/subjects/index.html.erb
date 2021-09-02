@@ -1,6 +1,6 @@
 <h1>AdminsBackoffice::Subjects#index</h1>
 
-<h2>Listando Assunto/Áreas</h2>
+<h2><%= t('message.listing', model: @subjects.model_name.human(count: 2)) %></h2>
 
 <div class="add_subject">
    <%= link_to new_admins_backoffice_subject_path, style:"color: green;" do %>
@@ -12,10 +12,10 @@
 <table class="table">
    <thead>
       <tr>
-         <th>ID</th>
-         <th>Assunto/Área</th>
-         <th>Edit</th>
-         <th>Delete</th>
+         <th><%= translate_attribute(@subjects, :id) %></th>
+         <th><%= translate_attribute(@subjects, :description) %></th>
+         <th><%= translate_attribute(@subjects, :edit) %></th>
+         <th><%= translate_attribute(@subjects, :delete) %></th>
       </tr>
    </thead>
    <tbody>  
@@ -31,7 +31,7 @@
                <% end %>
             </td>
             <td>
-               <%= link_to admins_backoffice_subject_path(subject), method: :delete, data: {confirm: "Deseja excluir este assunto?"} do %>
+               <%= link_to admins_backoffice_subject_path(subject), method: :delete, data: {confirm: t('message.confirm_delete_subject', name: subject.description)} do %>
                   <i class="bi bi-file-earmark-x"></i>
                <% end %>
             </td>

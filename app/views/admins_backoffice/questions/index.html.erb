@@ -1,6 +1,6 @@
 <h1>AdminsBackoffice::Questions#index</h1>
 
-<h2>Listando Questões</h2>
+<h2><%= t('message.listing', model: @questions.model_name.human(count: 2)) %></h2>
 
 <div>
    Quantidade de questões: 
@@ -18,11 +18,11 @@
 <table class="table">
    <thead>
       <tr>
-         <th>ID</th>
-         <th>Questão</th>
-         <th>Assunto/Área</th>
-         <th>Edit</th>
-         <th>Delete</th>
+         <th><%= translate_attribute(@questions, :id) %></th>
+         <th><%= translate_attribute(@questions, :description) %></th> <!--helper/admins_template-->
+         <th><%= translate_attribute(@questions, :subject) %></th>
+         <th><%= translate_attribute(@questions, :edit) %></th>
+         <th><%= translate_attribute(@questions, :delete) %></th>
       </tr>
    </thead>
    <tbody>
@@ -37,7 +37,7 @@
                <% end %>
             </td>
             <td>
-               <%= link_to admins_backoffice_question_path(question), method: :delete, data: {confirm: "Deseja excluir esta questão?"} do %>
+               <%= link_to admins_backoffice_question_path(question), method: :delete, data: {confirm: t('message.confirm_delete_question', item: question.id)} do %>
                   <i class="bi bi-x-circle"></i>
                <% end %>
             </td>
