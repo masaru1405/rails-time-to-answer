@@ -67,12 +67,14 @@ namespace :dev do
           answers_attributes: []
         }}
 
+        #nested attributes: cada questions irá possuir 5 answers
         5.times do |j|
           params[:question][:answers_attributes].push(
             {description: "#{Faker::Lorem.sentence}", correct: false}
           )
         end
 
+        #seleciona ao acaso uma answer que será a correta
         index = rand(params[:question][:answers_attributes].size)
         params[:question][:answers_attributes][index] = {description: "#{Faker::Lorem.sentence}", correct: true}
         

@@ -48,6 +48,6 @@ class AdminsBackoffice::QuestionsController < AdminsTemplateController
 
    private 
       def question_params()
-         params.require(:question).permit(:description, :subject_id)
+         params.require(:question).permit(:description, :subject_id, answers_attributes: [:id, :description, :correct, :_destroy])
       end
 end
