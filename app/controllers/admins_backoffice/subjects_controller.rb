@@ -11,7 +11,8 @@ class AdminsBackoffice::SubjectsController < AdminsTemplateController
    def create
       @subject = Subject.new(subject_params)
       if @subject.save
-         redirect_to admins_backoffice_subjects_path, notice: "Assunto/Área criado com sucesso!"
+         flash[:success] = "Assunto/Área criado com sucesso!"
+         redirect_to admins_backoffice_subjects_path
       else 
          render :new 
       end
@@ -24,7 +25,7 @@ class AdminsBackoffice::SubjectsController < AdminsTemplateController
    def update 
       @subject = Subject.find(params[:id])
       if @subject.update(subject_params)
-         flash[:notice] = "Assunto/Área atualizado com sucesso!"
+         flash[:success] = "Assunto/Área atualizado com sucesso!"
          redirect_to admins_backoffice_subjects_path
       else 
          render :edit
@@ -33,8 +34,10 @@ class AdminsBackoffice::SubjectsController < AdminsTemplateController
 
    def destroy
       @subject = Subject.find(params[:id])
+      subject_deleted = @subject.description
       if @subject.destroy
-         redirect_to admins_backoffice_subjects_path, notice: "Assunto excluído com sucesso!"
+         flash[:danger] = "#{subject_deleted} excluído!"
+         redirect_to admins_backoffice_subjects_path
       else
          render :index
       end

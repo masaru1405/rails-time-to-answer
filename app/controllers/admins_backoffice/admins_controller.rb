@@ -35,8 +35,10 @@ class AdminsBackoffice::AdminsController < AdminsTemplateController
 
    def destroy
       @admin = Admin.find(params[:id])
+      admin_deleted = @admin.email
       if @admin.destroy
-         redirect_to admins_backoffice_admins_path, notice: "Admin excluído com sucesso!"
+         flash[:danger] = "Administrador #{admin_deleted} excluído!"
+         redirect_to admins_backoffice_admins_path
       else
          render :index
       end

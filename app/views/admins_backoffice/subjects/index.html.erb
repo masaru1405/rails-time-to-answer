@@ -2,6 +2,8 @@
 
 <h2><%= t('message.listing', model: @subjects.model_name.human(count: 2)) %></h2>
 
+<%= render 'layouts/messages' %>
+
 <div class="add_subject">
    <%= link_to new_admins_backoffice_subject_path, style:"color: green;" do %>
       <i class="bi bi-file-earmark-plus"></i> Novo Assunto/Área

@@ -2,6 +2,8 @@
 
 <h2><%= t('message.listing', model: @questions.model_name.human(count: 2)) %></h2>
 
+<%= render 'layouts/messages' %>
+
 <div>
    Quantidade de questões: 
    <span class="badge badge-success"> <!--não funciona-->
