@@ -13,10 +13,10 @@
 <table class="table">
    <thead>
       <tr>
-         <th>ID</th>
-         <th>Email</th>
-         <th>Edit</th>
-         <th><span style="color: red;">Delete</span></th>
+         <th><%= translate_attribute(@admins, :id) %></th>
+         <th><%= translate_attribute(@admins, :email) %></th>
+         <th><%= translate_attribute(@admins, :edit) %></th>
+         <th><span style="color: red;"><%= translate_attribute(@admins, :delete) %></span></th>
       </tr>
    </thead>
    <tbody>

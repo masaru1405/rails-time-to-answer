@@ -15,12 +15,16 @@ pt-BR:
         other: Questões
     attributes:
       admin:
+        id: Código 
         email: Email
         password: Senha
         password_confirmation: Confirmação da senha
         created_at: Criado em
         updated_at: Atualizado em
+        edit: Editar
+        delete: Deletar
       user:
+        id: Código
         email: Email
         password: Senha
         password_confirmation: Confirmação da senha
