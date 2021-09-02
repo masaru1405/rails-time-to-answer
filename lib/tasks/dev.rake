@@ -61,12 +61,25 @@ namespace :dev do
   task add_questions_answers: :environment do 
     Subject.all.each do |subject|
       rand(5..10).times do |i|
-        Question.create!(
+        params = {question: {
           description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
-          subject_id: subject.id
-        )
+          subject: subject,
+          answers_attributes: []
+        }}
+
+        5.times do |j|
+          params[:question][:answers_attributes].push(
+            {description: "#{Faker::Lorem.sentence}", correct: false}
+          )
+        end
+
+        index = rand(params[:question][:answers_attributes].size)
+        params[:question][:answers_attributes][index] = {description: "#{Faker::Lorem.sentence}", correct: true}
+        
+        Question.create!(params[:question])
+
       end
-    end
+    end  
   end
 
   private
