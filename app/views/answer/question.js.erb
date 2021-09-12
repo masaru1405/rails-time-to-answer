@@ -1,0 +1,12 @@
+var element = document.getElementById("submit_<%= @answer.question_id %>")
+
+element.classList.remove('btn-secondary')
+element.classList.remove('btn-danger')
+element.classList.remove('btn-success')
+
+if(<%= @answer.correct %>){
+   element.classList.add('btn-success')
+}else{
+   element.classList.add('btn-danger')
+}
+

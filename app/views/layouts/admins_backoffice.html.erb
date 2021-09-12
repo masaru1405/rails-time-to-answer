@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TimeToAnswer</title>
+    <title>Admin</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -21,6 +21,7 @@
 
   <body class="container">
       <h1>Admins Backoffice Layout</h1>
+      <p>Params: <%= params %></p>
       <div>
         <% if admin_signed_in? %>
           Logado como: <strong><%= current_admin.email %></strong><br>

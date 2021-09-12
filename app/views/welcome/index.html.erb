@@ -25,3 +25,13 @@
       Administrador não logado | <%= link_to "Admin Login", new_admin_session_path %>
    </p>
 <% end %>
+
+<!-- Barra de pesquisa-->
+<%= form_with(url: search_path, method: :get, class: "form-group") do |form| %>
+   <%= form.text_field :term %>
+   <br>
+   <button type="submit" class="btn btn-primary">Pesquisar</button>
+<% end %>
+
+<%= render partial: 'shared/questions' %>
+

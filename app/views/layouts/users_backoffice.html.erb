@@ -21,6 +21,7 @@
 
   <body class="container">
       <h1>Users Backoffice Layout</h1>
+      <p>Params: <%= params %></p>
       <div>
         <% if user_signed_in? %>
           Logado como: <strong><%= current_user.email %></strong><br>
