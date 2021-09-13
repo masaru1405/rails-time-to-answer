@@ -2,7 +2,6 @@
   <h3><%= msg_jumbotron %></h3><!--helper em 'application_helper.rb'-->
 </div>
 
-<%= @questions.size %>
 
 <% @questions.each do |question| %>
    <%= form_with(url: answer_path, local: false) do |form| %>
