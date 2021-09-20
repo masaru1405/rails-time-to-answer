@@ -84,6 +84,15 @@ namespace :dev do
     end  
   end
 
+  desc "Reset subject counter"
+  task reset_subject_counter: :environment do 
+    show_spinner("Reset subject counter...") do
+      Subject.all.each do |subject|
+        Subject.reset_counters(subject.id, :questions)
+      end
+    end
+  end
+
   private
 
     def show_spinner(msg_start, msg_end = "٩(˘◡˘)۶!")

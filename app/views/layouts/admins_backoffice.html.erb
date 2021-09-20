@@ -25,7 +25,7 @@
       <div>
         <% if admin_signed_in? %>
           Logado como: <strong><%= current_admin.email %></strong><br>
-          <%= link_to 'Editar perfil', edit_admin_registration_path, :class => 'navbar-link' %> |
+          <%#= link_to 'Editar perfil', edit_admin_registration_path, :class => 'navbar-link' %> 
           <%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link'  %>
         <% else %>
           <%= link_to "Registrar-se", new_admin_registration_path, :class => 'navbar-link'  %> |

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   
   namespace :users_backoffice do
     get 'welcome/index' #dashboard
+    get 'user_profile', to: 'user_profile#edit'
+    patch 'user_profile', to: 'user_profile#update'
     resources :users
   end
   namespace :admins_backoffice do
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
 
 
   devise_for :users
-  devise_for :admins
+  devise_for :admins, skip: [:registrations]
   
 
 
