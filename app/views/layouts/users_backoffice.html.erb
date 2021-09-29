@@ -25,13 +25,46 @@
       <div>
         <% if user_signed_in? %>
           Logado como: <strong><%= current_user.email %></strong><br>
-          <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
+          current_user.user_profile.blank? = <%= current_user.user_profile.blank? %><br>
+
+          <%= link_to image_tag(avatar_url, class:"img-circle profile_img", style:"width:80px"), '#', "data-toggle":"modal", "data-target":"#avatarModal"%>
+          <%#= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> 
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         <% else %>
           <%= link_to "Registrar-se", new_user_registration_path, :class => 'navbar-link'  %> |
           <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
         <% end %>
       </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="avatarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <%= form_with(url: users_backoffice_user_profile_path, model: current_user, class:"form-horizontal form-label-left") do |form| %>
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Selecione um foto para seu perfil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= form.fields_for :user_profile  do |profile_form| %>
+                  <div class="form-group">
+                    <!--avatar_url é um helper-->
+                    <%= image_tag avatar_url, class:"img-circle profile_img", style:"width:80px" %>
+			              <%= profile_form.file_field :avatar %>
+		              </div>
+                <% end %>
+              </div>
+              <div class="modal-footer">
+                <%= form.submit 'Salvar', class:"btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!--End Modal-->
+
       <hr>
       <%= yield %>
   </body>

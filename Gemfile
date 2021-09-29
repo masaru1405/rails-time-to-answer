@@ -36,7 +36,7 @@ gem 'kaminari', :git => 'https://github.com/kaminari/kaminari'
 gem 'kaminari-i18n'
 gem 'awesome_print', '~> 1.8'
 gem "cocoon"
- 
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

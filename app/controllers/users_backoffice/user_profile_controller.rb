@@ -10,7 +10,11 @@ class UsersBackoffice::UserProfileController < UsersTemplateController
    def update 
       if @user.update(params_user)
          bypass_sign_in(@user) #faz login automaticamente
-         redirect_to users_backoffice_welcome_index_path
+         #if params_user[:user_profile_attributes][:avatar]
+         
+         #else
+            redirect_to users_backoffice_welcome_index_path
+         #end
       else
          render :edit
       end
@@ -22,7 +26,7 @@ class UsersBackoffice::UserProfileController < UsersTemplateController
    end
 
    def params_user
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,user_profile_attributes: [:id, :address, :gender, :birthday])
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,user_profile_attributes: [:id, :address, :gender, :birthday, :avatar])
    end 
 
    #Verifica se os campos password e password_confirmation estão em branco, pois por padrão

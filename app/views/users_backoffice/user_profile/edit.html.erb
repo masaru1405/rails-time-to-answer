@@ -23,14 +23,60 @@
 			<%= profile_form.label :address %><br>
 			<%= profile_form.text_field :address, class:"form-control"%>
 		</div>
+
 		<div class="form-group">
 			<%= profile_form.label :gender %><br>
-			<%= profile_form.text_field :gender, class:"form-control" %>
+			<label>
+				<%= profile_form.radio_button :gender, "M" %> &nbsp; Masculino &nbsp;
+			</label>
+			<label>
+				<%= profile_form.radio_button :gender, "F" %> &nbsp; Feminino &nbsp;
+			</label>
 		</div>
+
+		<!--vídeo 215: trabalhando com radio buttons-->
+		<!--
 		<div class="form-group">
-			<%= profile_form.label :birthday %><br>
-			<%= profile_form.text_field :birthday, class:"form-control"%>
+			<%= profile_form.label :gender %><br>
+			<div id="gender" class="btn-group" data-toggle="buttons">
+				<label class="btn <%= gender_select(@user, 'M')  %>">
+					<%= profile_form.radio_button :gender, "M", "data-parsely-multiple":"gender" %> &nbsp; Masculino &nbsp;
+				</label>
+				<label class="btn <%= gender_select(@user, 'F') %> ">
+					<%= profile_form.radio_button :gender, "F", "data-parsely-multiple":"gender" %> &nbsp; Feminino &nbsp;
+				</label>
+			</div>	
 		</div>
+		-->
+
+		<!-- Add funcionalidade de toggle para as classes 'primary' e 'default' dos botões-->
+		<%= javascript_tag do %>
+			var labels = document.querySelectorAll('div#gender label')
+			labels.forEach((label) => {
+				label.addEventListener('click', () => {
+					label.classList.remove('btn-default');
+					label.classList.add('btn-primary');
+
+					labels.forEach((lbl) => {
+						if(lbl != label) {
+							label.classList.remove('btn-primary');
+							label.classList.add('btn-default');
+						}
+					})
+				})
+			})
+		<% end %>
+
+		<div class="form-group">
+			<%= profile_form.label :birthday %>
+			<% if I18n.locale == :"pt-BR" %>
+				<span>: mês/dia/ano</span><br>
+			<% else %>
+				<span>: month/day/year</span><br>
+			<% end %>
+			<%= profile_form.date_field :birthday, class:"form-control" %>
+		</div>
+		
 	<% end %>
 
 	<div class="form-group">

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/search', to: 'search#questions'
   get '/subject/:subject_id/:subject', to: 'search#subject', as: 'search_subject'
   post '/answer', to: 'answer#question'
+  get '/admins', to: 'admins_backoffice/welcome#index'
   
   namespace :users_backoffice do
     get 'welcome/index' #dashboard

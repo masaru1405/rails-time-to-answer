@@ -8,8 +8,15 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+
 require("jquery")
 require("@nathanvda/cocoon")
+
+
+const application = Application.start()
+const context = require.context('../controllers', true, /\.js$/)
+application.load(definitionsFromContext(context))
+
 
 Rails.start()
 Turbolinks.start()
