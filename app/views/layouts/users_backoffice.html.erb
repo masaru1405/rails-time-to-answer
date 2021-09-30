@@ -27,8 +27,12 @@
           Logado como: <strong><%= current_user.email %></strong><br>
           current_user.user_profile.blank? = <%= current_user.user_profile.blank? %><br>
 
+          <!--avatar_url é um helper 'user_profile_helper.rb' (vídeo 220)-->
+          <!--Se quisessemos somente a imagem:-->
+          <%#= image_tag avatar_url, class:"img-circle profile_img", style:"width:80px"%>
+
           <%= link_to image_tag(avatar_url, class:"img-circle profile_img", style:"width:80px"), '#', "data-toggle":"modal", "data-target":"#avatarModal"%>
-          <%#= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> 
+      
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         <% else %>
           <%= link_to "Registrar-se", new_user_registration_path, :class => 'navbar-link'  %> |
@@ -50,7 +54,7 @@
               <div class="modal-body">
                 <%= form.fields_for :user_profile  do |profile_form| %>
                   <div class="form-group">
-                    <!--avatar_url é um helper-->
+                    <!--avatar_url é um helper 'user_profile_helper.rb' (vídeo 220)-->
                     <%= image_tag avatar_url, class:"img-circle profile_img", style:"width:80px" %>
 			              <%= profile_form.file_field :avatar %>
 		              </div>

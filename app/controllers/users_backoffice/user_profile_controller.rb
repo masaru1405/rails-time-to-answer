@@ -10,11 +10,11 @@ class UsersBackoffice::UserProfileController < UsersTemplateController
    def update 
       if @user.update(params_user)
          bypass_sign_in(@user) #faz login automaticamente
-         #if params_user[:user_profile_attributes][:avatar]
-         
-         #else
+         if params_user[:user_profile_attributes][:avatar]
             redirect_to users_backoffice_welcome_index_path
-         #end
+         else
+            users_backoffice_user_profile_path
+         end
       else
          render :edit
       end
