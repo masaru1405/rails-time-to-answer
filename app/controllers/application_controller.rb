@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
    layout :layout_by_resource
+   before_action :check_pagination
 
    def after_sign_in_path_for(resource)
       if user_signed_in?
@@ -14,6 +15,13 @@ class ApplicationController < ActionController::Base
          "admin_devise"
       else 
          "application" #utiliza o layout application
+      end
+   end
+
+   def check_pagination
+      #se usuário não estiver logado, remova o params[:page]
+      unless user_signed_in?
+         params.extract!(:page)
       end
    end
 end
