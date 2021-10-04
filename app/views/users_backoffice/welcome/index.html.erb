@@ -9,3 +9,11 @@
 <p>
    <%= link_to "Dados do Perfil", users_backoffice_user_profile_path %>
 </p>
+
+<div>
+   <ul>
+      <li>Total de questões respondidas: <%= @user_statistic.total_questions %></li>
+      <li>Total de questões respondidas corretamente: <%= @user_statistic.correct_questions %></li>
+      <li>Total de questões respondidas incorretamente: <%= @user_statistic.incorrect_questions %></li>
+   </ul>
+</div>
